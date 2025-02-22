@@ -1,0 +1,12 @@
+$Raleway: 
+('Regular', 400),
+('Medium', 500);
+
+@each $name,
+$weight in $Raleway {
+    @font-face {
+        font-family: 'Raleway';
+        src: url('@/assets/fonts/Raleway/Raleway-#{$name}.ttf');
+        font-weight: $weight;
+    }
+}

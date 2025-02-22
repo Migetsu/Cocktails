@@ -1,0 +1,92 @@
+@mixin media($size) {
+    @media(max-width: #{$size}px) {
+        @content
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Raleway";
+    font-weight: 400;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+body {
+    // background: #081b29;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.loading {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__spiner {
+        height: 50px;
+        width: 50px;
+        border: 2px solid transparent;
+        border-top: 2px solid green;
+        border-radius: 50%;
+        animation: loading 1s infinite ease-in-out;
+    }
+}
+
+.title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 6.4px;
+    text-transform: uppercase;
+}
+
+.line {
+    width: 100px;
+    height: 5px;
+    margin: 32px auto 50px;
+    background: #FF0F82;
+}
+
+@keyframes scroll {
+    0% {
+        background: transparent;
+    }
+
+    100% {
+        background: #081b29;
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
