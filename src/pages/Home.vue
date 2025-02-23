@@ -8,10 +8,12 @@
           <div class="select-wrapper">
             <el-select 
             class="select"
-            v-model="ingredient" 
+            v-model="rootStore.ingredient" 
             placeholder="Choose main ingredient" 
             @change="getCocktails"
-            size="large">
+            size="large"
+            filterable 
+            >
               <el-option 
               v-for="item in ingredients" 
               :key="item.strIngredient1" 
@@ -45,11 +47,10 @@ import { useRootStore } from '@/store/root'
 import { storeToRefs } from 'pinia'
 
 const rootStore = useRootStore()
-const { ingredients, cocktails } = storeToRefs(rootStore)
-const ingredient = ref(null)
+const { ingredients, cocktails, ingredient } = storeToRefs(rootStore)
 
 const getCocktails = () => {
-  rootStore.getCocktails(ingredient.value)
+  rootStore.getCocktails(rootStore.ingredient)
 }
 
 onMounted(async () => {
@@ -70,6 +71,7 @@ onUnmounted(() => {
   & .info {
     padding: 80px 0;
     text-align: center;
+    max-height: 80vh;
 
     & .text {
       margin: 0 auto;

@@ -1,5 +1,5 @@
 <template>
-  
+  CocktailRandom
 </template>
 
 <script setup>
