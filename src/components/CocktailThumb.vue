@@ -29,8 +29,18 @@ const props = defineProps({
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 38px;
-  max-height: 700px;
+  max-height: 550px;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #60629b;
+    border-radius: 12px;
+    transition: all .3s ease;
+  }
 
   & .content {
     display: flex;

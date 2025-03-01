@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <AppLayout :imgUrl="imgUrl">
+    <AppLayout :imgUrl="imgUrl" :backFunc="removeIngredients" :isBackBtnVisible="!!ingredient">
       <div class="content">
         <div class="info" v-if="!ingredient || !cocktails">
           <h2 class="title">Choose your drink</h2>
@@ -51,6 +51,10 @@ const { ingredients, cocktails, ingredient } = storeToRefs(rootStore)
 
 const getCocktails = () => {
   rootStore.getCocktails(rootStore.ingredient)
+}
+
+function removeIngredients() {
+  rootStore.setIngredient(null)
 }
 
 onMounted(async () => {

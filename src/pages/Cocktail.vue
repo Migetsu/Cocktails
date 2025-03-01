@@ -1,6 +1,6 @@
 <template>
   <div class="wrap" v-if="cocktail">
-    <AppLayout :imgUrl="cocktail.strDrinkThumb">
+    <AppLayout :imgUrl="cocktail.strDrinkThumb" :backFunc="goBack">
       <div class="info">
         <h2 class="title">{{ cocktail.strDrink }}</h2>
         <div class="line"></div>
@@ -10,6 +10,11 @@
             {{ item.name }} | <span v-if="item.measure">{{ item.measure }}</span>
           </div>
         </div>
+
+        <div class="instructions">
+          <p class="instructions__category">{{ cocktail.strCategory }}</p>
+          <p class="instructions__cocktail">{{ cocktail.strInstructions }}</p>
+        </div>
       </div>
     </AppLayout>
   </div>
@@ -17,7 +22,7 @@
 
 <script setup>
 import AppLayout from '@/components/AppLayout/AppLayout.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { computed } from 'vue'
 import { COCKTAIL_DETAILS_URL } from '@/constants'
 import axios from 'axios'
@@ -25,6 +30,7 @@ import { ref } from 'vue'
 import imgUrl from '@/assets/images/bg.svg'
 
 const route = useRoute()
+const router = useRouter()
 const cocktailId = computed(() => route.path.split('/').pop())
 const cocktail = ref(null)
 
@@ -47,6 +53,10 @@ async function getCocktail() {
   cocktail.value = data.data.drinks[0]
 }
 getCocktail()
+
+function goBack() {
+  router.go(-1)
+}
 </script>
 
 <style lang="scss">
@@ -65,10 +75,15 @@ getCocktail()
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-left: 40px;
 
       &-item {
         position: relative;
         padding-left: 30px;
+        color: #fff;
+        font-size: 18px;
+        line-height: 27px;
+        letter-spacing: 1.8px;
 
         &::before {
           content: '';
@@ -81,6 +96,20 @@ getCocktail()
           height: 20px;
         }
       }
+    }
+
+    & .instructions {
+      color: #d3d3d3;
+      text-align: center;
+      font-size: 20px;
+      line-height: 30px;
+      letter-spacing: 2px;
+      max-width: 516px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
   }
 }

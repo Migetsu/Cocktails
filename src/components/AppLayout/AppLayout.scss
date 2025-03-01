@@ -15,6 +15,25 @@
         padding: 32px 50px;
         position: relative;
 
+        & .btns {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            & .back {
+                width: 53px;
+                height: 53px;
+                background: transparent;
+                border-color: #fff;
+                transition: .4s;
+                font-size: 25px;
+
+                &:hover {
+                    border-color: #ff0f82;
+                }
+            }
+        }
+
         & .btn {
             position: absolute;
             top: 32px;

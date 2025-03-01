@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { INGREDIENTS_URL, COCKTAILS_BY_INGR_URL } from '../constants'
-import { set } from "lodash";
+import { remove, set } from "lodash";
 
 export const useRootStore = defineStore("root", {
     state: () => ({
