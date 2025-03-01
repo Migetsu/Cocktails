@@ -5,16 +5,12 @@
         <h2 class="title">{{ cocktail.strDrink }}</h2>
         <div class="line"></div>
 
-        <!-- <div class="info__items">
-          <div class="info__items-item" v-for="(item, idx) in ingredient" :key="idx">
-            {{ item.name }} | <span v-if="item.measure">{{ item.measure }}</span>
-          </div>
-        </div> -->
         <div class="slider">
           <Swiper :slides-per-view="3" :space-between="50" class="swiper">
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
+            <SwiperSlide class="swiper-slide" v-for="(ingredients, idx) in ingredient" :key="idx">
+              <img :src="`${INGREDIENT_PIC}${ingredients}-Small.png`" alt="">
+              <p class="name">{{ ingredients }}</p>
+            </SwiperSlide>
           </Swiper>
         </div>
 
@@ -31,7 +27,7 @@
 import AppLayout from '@/components/AppLayout/AppLayout.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computed } from 'vue'
-import { COCKTAIL_RANDOM } from '@/constants'
+import { COCKTAIL_RANDOM, INGREDIENT_PIC } from '@/constants'
 import axios from 'axios'
 import { ref } from 'vue'
 import imgUrl from '@/assets/images/bg.svg'
@@ -127,5 +123,20 @@ function goBack() {
 
 .swiper {
   width: 600px;
+}
+
+.name {
+  color: #fff;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 1.8px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
