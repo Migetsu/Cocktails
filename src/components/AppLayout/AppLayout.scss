@@ -3,17 +3,101 @@
     background: #141414;
     min-height: 100vh;
 
+    @include media(1440) {
+        flex-direction: column;
+    }
+
+    @include media(1024) {
+        flex-direction: column;
+    }
+
+    @include media(768) {
+        flex-direction: column;
+    }
+
+    @include media(425) {
+        flex-direction: column;
+    }
+
+    @include media(375) {
+        flex-direction: column;
+    }
+
+    @include media(320) {
+        flex-direction: column;
+    }
+
     & .img {
         width: 50%;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+
+        @include media(1440) {
+            width: 100%;
+            height: 300px;
+        }
+
+        @include media(1024) {
+            width: 100%;
+            height: 250px;
+        }
+
+        @include media(768) {
+            width: 100%;
+            height: 200px;
+        }
+
+        @include media(425) {
+            width: 100%;
+            height: 150px;
+        }
+
+        @include media(375) {
+            width: 100%;
+            height: 100px;
+        }
+
+        @include media(320) {
+            width: 100%;
+            height: 80px;
+        }
     }
 
     & .main {
         width: 50%;
         padding: 32px 50px;
         position: relative;
+
+        @include media(1440) {
+            width: 100%;
+            padding: 30px 45px;
+        }
+
+        @include media(1024) {
+            width: 100%;
+            padding: 28px 40px;
+        }
+
+        @include media(768) {
+            width: 100%;
+            padding: 26px 35px;
+        }
+
+        @include media(425) {
+            width: 100%;
+            padding: 24px 30px;
+        }
+
+        @include media(375) {
+            width: 100%;
+            padding: 22px 25px;
+        }
+
+        @include media(320) {
+            width: 100%;
+            padding: 20px 20px;
+        }
 
         & .btns {
             display: flex;
@@ -49,6 +133,36 @@
                 background-color: #FF0F82;
                 border-color: #FF0F82;
                 color: #ffffff;
+            }
+
+            @include media(1440) {
+                top: 30px;
+                right: 35px;
+            }
+
+            @include media(1024) {
+                top: 28px;
+                right: 30px;
+            }
+
+            @include media(768) {
+                top: 26px;
+                right: 25px;
+            }
+
+            @include media(425) {
+                top: 24px;
+                right: 20px;
+            }
+
+            @include media(375) {
+                top: 22px;
+                right: 15px;
+            }
+
+            @include media(320) {
+                top: 5px;
+                right: 65px;
             }
         }
     }

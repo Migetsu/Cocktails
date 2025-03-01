@@ -6,7 +6,7 @@
         <div class="line"></div>
 
         <div class="slider">
-          <Swiper :slides-per-view="3" :space-between="50" class="swiper">
+          <Swiper :modules="modules" :space-between="25" :breakpoints="swiperOptions.breakpoints" class="swiper">
             <SwiperSlide class="swiper-slide" v-for="(ingredients, idx) in ingredient" :key="idx">
               <img :src="`${INGREDIENT_PIC}${ingredients}-Small.png`" alt="">
               <p class="name">{{ ingredients }}</p>
@@ -29,10 +29,32 @@ import { useRoute, useRouter } from 'vue-router'
 import { computed } from 'vue'
 import { COCKTAIL_RANDOM, INGREDIENT_PIC } from '@/constants'
 import axios from 'axios'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import imgUrl from '@/assets/images/bg.svg'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
+import { Navigation } from 'swiper/modules';
+
+const swiperOptions = reactive({
+    breakpoints: {
+        320: {
+            slidesPerView: 1
+        },
+        576: {
+            slidesPerView: 2
+        },
+        900: {
+            slidesPerView: 3
+        },
+        1200: {
+            slidesPerView: 4
+        },
+        1450: {
+            slidesPerView: 5.5
+        }
+    }
+})
+const modules = reactive([Navigation])
 
 const route = useRoute()
 const router = useRouter()
@@ -69,16 +91,17 @@ function goBack() {
 
     & .title {
       text-align: center;
+      font-size: 24px;
     }
 
     &__items {
-      width: 560px;
+      width: 100%;
       padding: 50px 0 80px;
       text-align: left;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      margin-left: 40px;
+      margin-left: 0;
 
       &-item {
         position: relative;
@@ -104,33 +127,33 @@ function goBack() {
     & .instructions {
       color: #d3d3d3;
       text-align: center;
-      font-size: 20px;
-      line-height: 30px;
-      letter-spacing: 2px;
-      max-width: 516px;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 1.5px;
+      max-width: 100%;
       width: 100%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 20px;
     }
   }
 }
 
 .slider {
-  padding: 50px 0;
+  padding: 20px 0;
 }
 
 .swiper {
-  width: 600px;
+  width: 100%;
 }
 
 .name {
   color: #fff;
-  font-size: 18px;
-  line-height: 27px;
-  letter-spacing: 1.8px;
-  margin-top: 20px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -138,5 +161,50 @@ function goBack() {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (min-width: 576px) {
+  .wrap {
+    & .info {
+      & .title {
+        font-size: 28px;
+      }
+      & .instructions {
+        font-size: 18px;
+        line-height: 27px;
+        letter-spacing: 1.8px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    & .info {
+      & .title {
+        font-size: 32px;
+      }
+      & .instructions {
+        font-size: 20px;
+        line-height: 30px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .wrap {
+    & .info {
+      & .title {
+        font-size: 36px;
+      }
+      & .instructions {
+        font-size: 22px;
+        line-height: 33px;
+        letter-spacing: 2.2px;
+      }
+    }
+  }
 }
 </style>

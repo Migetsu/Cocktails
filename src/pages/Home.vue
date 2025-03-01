@@ -67,6 +67,12 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
+@mixin media($size) {
+    @media(max-width: #{$size}px) {
+        @content
+    }
+}
+
 .content {
   display: flex;
   align-items: center;
@@ -75,7 +81,32 @@ onUnmounted(() => {
   & .info {
     padding: 80px 0;
     text-align: center;
-    max-height: 80vh;
+    // max-height: 100vh;
+    overflow: hidden;
+
+    @include media(1440) {
+        padding: 70px 0;
+    }
+
+    @include media(1024) {
+        padding: 60px 0;
+    }
+
+    @include media(768) {
+        padding: 50px 0;
+    }
+
+    @include media(425) {
+        padding: 40px 0;
+    }
+
+    @include media(375) {
+        padding: 30px 0;
+    }
+
+    @include media(320) {
+        padding: 20px 0;
+    }
 
     & .text {
       margin: 0 auto;
@@ -87,10 +118,70 @@ onUnmounted(() => {
       color: #d3d3d3;
       max-width: 516px;
       width: 100%;
+
+      @include media(1440) {
+          margin-top: 45px;
+          font-size: 15px;
+          line-height: 34px;
+      }
+
+      @include media(1024) {
+          margin-top: 40px;
+          font-size: 14px;
+          line-height: 32px;
+      }
+
+      @include media(768) {
+          margin-top: 35px;
+          font-size: 13px;
+          line-height: 30px;
+      }
+
+      @include media(425) {
+          margin-top: 30px;
+          font-size: 12px;
+          line-height: 28px;
+      }
+
+      @include media(375) {
+          margin-top: 25px;
+          font-size: 11px;
+          line-height: 26px;
+      }
+
+      @include media(320) {
+          margin-top: 20px;
+          font-size: 10px;
+          line-height: 24px;
+      }
     }
 
     & .img {
-      margin-top: 60px;
+      margin-top: 20px;
+
+      @include media(1440) {
+          margin-top: 15px;
+      }
+
+      @include media(1024) {
+          margin-top: 10px;
+      }
+
+      @include media(768) {
+          margin-top: 5px;
+      }
+
+      @include media(425) {
+          margin-top: 0;
+      }
+
+      @include media(375) {
+          margin-top: 0;
+      }
+
+      @include media(320) {
+          margin-top: 0;
+      }
     }
 
     & .select-wrapper {
@@ -103,6 +194,30 @@ onUnmounted(() => {
 
         .el-select__placeholder {
           color: #D3D3D3CC;
+        }
+
+        @include media(1440) {
+            width: 230px;
+        }
+
+        @include media(1024) {
+            width: 220px;
+        }
+
+        @include media(768) {
+            width: 210px;
+        }
+
+        @include media(425) {
+            width: 200px;
+        }
+
+        @include media(375) {
+            width: 190px;
+        }
+
+        @include media(320) {
+            width: 180px;
         }
       }
     }

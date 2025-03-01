@@ -28,7 +28,6 @@ button {
 }
 
 body {
-    // background: #081b29;
     overflow-x: hidden;
 }
 
@@ -37,6 +36,30 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 0 15px;
+
+    @include media(1440) {
+        max-width: 1200px;
+    }
+
+    @include media(1024) {
+        max-width: 1000px;
+    }
+
+    @include media(768) {
+        max-width: 800px;
+    }
+
+    @include media(425) {
+        max-width: 600px;
+    }
+
+    @include media(375) {
+        max-width: 500px;
+    }
+
+    @include media(320) {
+        max-width: 400px;
+    }
 }
 
 .loading {
@@ -62,6 +85,36 @@ body {
     font-weight: 500;
     letter-spacing: 6.4px;
     text-transform: uppercase;
+
+    @include media(1440) {
+        font-size: 30px;
+        letter-spacing: 6px;
+    }
+
+    @include media(1024) {
+        font-size: 28px;
+        letter-spacing: 5.6px;
+    }
+
+    @include media(768) {
+        font-size: 26px;
+        letter-spacing: 5.2px;
+    }
+
+    @include media(425) {
+        font-size: 24px;
+        letter-spacing: 4.8px;
+    }
+
+    @include media(375) {
+        font-size: 22px;
+        letter-spacing: 4.4px;
+    }
+
+    @include media(320) {
+        font-size: 20px;
+        letter-spacing: 4px;
+    }
 }
 
 .line {
@@ -69,6 +122,30 @@ body {
     height: 5px;
     margin: 32px auto 50px;
     background: #FF0F82;
+
+    @include media(1440) {
+        margin: 30px auto 45px;
+    }
+
+    @include media(1024) {
+        margin: 28px auto 40px;
+    }
+
+    @include media(768) {
+        margin: 26px auto 35px;
+    }
+
+    @include media(425) {
+        margin: 24px auto 30px;
+    }
+
+    @include media(375) {
+        margin: 22px auto 25px;
+    }
+
+    @include media(320) {
+        margin: 20px auto 20px;
+    }
 }
 
 @keyframes scroll {
